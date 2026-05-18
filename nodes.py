@@ -37,6 +37,8 @@ LANGUAGES = [
     "el",
 ]
 
+TIMESIGNATURES = ["2", "3", "4", "6"]
+
 KEYSCALES = [
     f"{root} {quality}"
     for quality in ["major", "minor"]
@@ -283,13 +285,13 @@ class ACEStep15XLTTSLikePrompt:
                 "lines_per_section": ("INT", {"default": 4, "min": 1, "max": 16}),
                 "bpm": ("INT", {"default": 80, "min": 10, "max": 300}),
                 "duration": ("FLOAT", {"default": 30.0, "min": 1.0, "max": 2000.0, "step": 0.1}),
-                "timesignature": (["2", "3", "4", "6"], {"default": "4"}),
+                "timesignature": (TIMESIGNATURES, {"default": "4"}),
                 "language": (LANGUAGES, {"default": "zh"}),
                 "keyscale": (KEYSCALES, {"default": "G minor"}),
             }
         }
 
-    RETURN_TYPES = ("STRING", "STRING", "INT", "FLOAT", "COMBO", "COMBO", "COMBO")
+    RETURN_TYPES = ("STRING", "STRING", "INT", "FLOAT", TIMESIGNATURES, LANGUAGES, KEYSCALES)
     RETURN_NAMES = ("tags", "lyrics", "bpm", "duration", "timesignature", "language", "keyscale")
     FUNCTION = "build"
     CATEGORY = CATEGORY
@@ -322,7 +324,7 @@ class ACEStep15XLTextEncode:
                 "seed": ("INT", {"default": 0, "min": 0, "max": 0xFFFFFFFFFFFFFFFF, "control_after_generate": True}),
                 "bpm": ("INT", {"default": 120, "min": 10, "max": 300}),
                 "duration": ("FLOAT", {"default": 120.0, "min": 0.0, "max": 2000.0, "step": 0.1}),
-                "timesignature": (["2", "3", "4", "6"], {"default": "4"}),
+                "timesignature": (TIMESIGNATURES, {"default": "4"}),
                 "language": (LANGUAGES, {"default": "en"}),
                 "keyscale": (KEYSCALES, {"default": "E minor"}),
                 "generate_audio_codes": ("BOOLEAN", {"default": True}),

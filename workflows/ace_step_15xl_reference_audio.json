@@ -245,7 +245,12 @@
         },
         {
           "name": "timesignature",
-          "type": "COMBO",
+          "type": [
+            "2",
+            "3",
+            "4",
+            "6"
+          ],
           "links": [
             21
           ],
@@ -253,7 +258,31 @@
         },
         {
           "name": "language",
-          "type": "COMBO",
+          "type": [
+            "en",
+            "ja",
+            "zh",
+            "es",
+            "de",
+            "fr",
+            "pt",
+            "ru",
+            "it",
+            "nl",
+            "pl",
+            "tr",
+            "vi",
+            "cs",
+            "fa",
+            "id",
+            "ko",
+            "uk",
+            "hu",
+            "ar",
+            "sv",
+            "ro",
+            "el"
+          ],
           "links": [
             22
           ],
@@ -261,7 +290,42 @@
         },
         {
           "name": "keyscale",
-          "type": "COMBO",
+          "type": [
+            "C major",
+            "C# major",
+            "Db major",
+            "D major",
+            "D# major",
+            "Eb major",
+            "E major",
+            "F major",
+            "F# major",
+            "Gb major",
+            "G major",
+            "G# major",
+            "Ab major",
+            "A major",
+            "A# major",
+            "Bb major",
+            "B major",
+            "C minor",
+            "C# minor",
+            "Db minor",
+            "D minor",
+            "D# minor",
+            "Eb minor",
+            "E minor",
+            "F minor",
+            "F# minor",
+            "Gb minor",
+            "G minor",
+            "G# minor",
+            "Ab minor",
+            "A minor",
+            "A# minor",
+            "Bb minor",
+            "B minor"
+          ],
           "links": [
             23
           ],
@@ -348,7 +412,12 @@
         },
         {
           "name": "timesignature",
-          "type": "COMBO",
+          "type": [
+            "2",
+            "3",
+            "4",
+            "6"
+          ],
           "link": 21,
           "widget": {
             "name": "timesignature"
@@ -356,7 +425,31 @@
         },
         {
           "name": "language",
-          "type": "COMBO",
+          "type": [
+            "en",
+            "ja",
+            "zh",
+            "es",
+            "de",
+            "fr",
+            "pt",
+            "ru",
+            "it",
+            "nl",
+            "pl",
+            "tr",
+            "vi",
+            "cs",
+            "fa",
+            "id",
+            "ko",
+            "uk",
+            "hu",
+            "ar",
+            "sv",
+            "ro",
+            "el"
+          ],
           "link": 22,
           "widget": {
             "name": "language"
@@ -364,7 +457,42 @@
         },
         {
           "name": "keyscale",
-          "type": "COMBO",
+          "type": [
+            "C major",
+            "C# major",
+            "Db major",
+            "D major",
+            "D# major",
+            "Eb major",
+            "E major",
+            "F major",
+            "F# major",
+            "Gb major",
+            "G major",
+            "G# major",
+            "Ab major",
+            "A major",
+            "A# major",
+            "Bb major",
+            "B major",
+            "C minor",
+            "C# minor",
+            "Db minor",
+            "D minor",
+            "D# minor",
+            "Eb minor",
+            "E minor",
+            "F minor",
+            "F# minor",
+            "Gb minor",
+            "G minor",
+            "G# minor",
+            "Ab minor",
+            "A minor",
+            "A# minor",
+            "Bb minor",
+            "B minor"
+          ],
           "link": 23,
           "widget": {
             "name": "keyscale"
@@ -873,7 +1001,12 @@
       4,
       8,
       6,
-      "COMBO"
+      [
+        "2",
+        "3",
+        "4",
+        "6"
+      ]
     ],
     [
       22,
@@ -881,7 +1014,31 @@
       5,
       8,
       7,
-      "COMBO"
+      [
+        "en",
+        "ja",
+        "zh",
+        "es",
+        "de",
+        "fr",
+        "pt",
+        "ru",
+        "it",
+        "nl",
+        "pl",
+        "tr",
+        "vi",
+        "cs",
+        "fa",
+        "id",
+        "ko",
+        "uk",
+        "hu",
+        "ar",
+        "sv",
+        "ro",
+        "el"
+      ]
     ],
     [
       23,
@@ -889,7 +1046,42 @@
       6,
       8,
       8,
-      "COMBO"
+      [
+        "C major",
+        "C# major",
+        "Db major",
+        "D major",
+        "D# major",
+        "Eb major",
+        "E major",
+        "F major",
+        "F# major",
+        "Gb major",
+        "G major",
+        "G# major",
+        "Ab major",
+        "A major",
+        "A# major",
+        "Bb major",
+        "B major",
+        "C minor",
+        "C# minor",
+        "Db minor",
+        "D minor",
+        "D# minor",
+        "Eb minor",
+        "E minor",
+        "F minor",
+        "F# minor",
+        "Gb minor",
+        "G minor",
+        "G# minor",
+        "Ab minor",
+        "A minor",
+        "A# minor",
+        "Bb minor",
+        "B minor"
+      ]
     ]
   ],
   "groups": [],
