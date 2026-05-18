@@ -1,0 +1,909 @@
+{
+  "id": "comfyui-acestep-reference-audio",
+  "revision": 0,
+  "last_node_id": 16,
+  "last_link_id": 23,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "UNETLoader",
+      "pos": [
+        -780,
+        -640
+      ],
+      "size": [
+        380,
+        110
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            1
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.11.1",
+        "Node name for S&R": "UNETLoader",
+        "models": [
+          {
+            "name": "acestep_v1.5_xl_turbo_bf16.safetensors",
+            "directory": "diffusion_models"
+          }
+        ]
+      },
+      "widgets_values": [
+        "acestep_v1.5_xl_turbo_bf16.safetensors",
+        "default"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "ModelSamplingAuraFlow",
+      "pos": [
+        -360,
+        -640
+      ],
+      "size": [
+        330,
+        110
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            12
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.11.1",
+        "Node name for S&R": "ModelSamplingAuraFlow"
+      },
+      "widgets_values": [
+        3
+      ]
+    },
+    {
+      "id": 3,
+      "type": "DualCLIPLoader",
+      "pos": [
+        -780,
+        -470
+      ],
+      "size": [
+        380,
+        180
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            2
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.11.1",
+        "Node name for S&R": "DualCLIPLoader"
+      },
+      "widgets_values": [
+        "qwen_0.6b_ace15.safetensors",
+        "qwen_4b_ace15.safetensors",
+        "ace",
+        "default"
+      ]
+    },
+    {
+      "id": 4,
+      "type": "VAELoader",
+      "pos": [
+        -780,
+        -230
+      ],
+      "size": [
+        380,
+        110
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            11,
+            19
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.11.1",
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "ace_1.5_vae.safetensors"
+      ]
+    },
+    {
+      "id": 5,
+      "type": "Seed (rgthree)",
+      "pos": [
+        -780,
+        -40
+      ],
+      "size": [
+        315,
+        130
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "seed",
+          "type": "INT",
+          "links": [
+            5,
+            17
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "cnr_id": "rgthree-comfy",
+        "Node name for S&R": "Seed (rgthree)"
+      },
+      "widgets_values": [
+        -1,
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "id": 6,
+      "type": "ACEStep15XLTTSLikePrompt",
+      "pos": [
+        -1180,
+        -360
+      ],
+      "size": [
+        520,
+        460
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "tags",
+          "type": "STRING",
+          "links": [
+            3
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "lyrics",
+          "type": "STRING",
+          "links": [
+            4
+          ],
+          "slot_index": 1
+        },
+        {
+          "name": "bpm",
+          "type": "INT",
+          "links": [
+            6
+          ],
+          "slot_index": 2
+        },
+        {
+          "name": "duration",
+          "type": "FLOAT",
+          "links": [
+            7,
+            8
+          ],
+          "slot_index": 3
+        },
+        {
+          "name": "timesignature",
+          "type": "COMBO",
+          "links": [
+            21
+          ],
+          "slot_index": 4
+        },
+        {
+          "name": "language",
+          "type": "COMBO",
+          "links": [
+            22
+          ],
+          "slot_index": 5
+        },
+        {
+          "name": "keyscale",
+          "type": "COMBO",
+          "links": [
+            23
+          ],
+          "slot_index": 6
+        }
+      ],
+      "properties": {
+        "cnr_id": "ComfyUI-ACEStep",
+        "Node name for S&R": "ACEStep15XLTTSLikePrompt"
+      },
+      "widgets_values": [
+        "月色落在窗前\n我把想念轻轻念给你听\n风穿过安静的长街\n像你的声音靠近我心里\n\n请用温柔的声音唱出这些字\n每一句都清楚\n每一次停顿都像呼吸\n让我听见熟悉的你",
+        "Mandarin Chinese solo vocal, voice clone reference, clear lead vocal, intimate close-mic vocal, natural pronunciation, expressive singing, minimal accompaniment, soft piano bed, no instrumental intro, lyrics forward, clean vocal mix, gentle emotional delivery",
+        "verse",
+        4,
+        80,
+        30.0,
+        "4",
+        "zh",
+        "G minor"
+      ],
+      "color": "#2B6E7F",
+      "bgcolor": "#18323D"
+    },
+    {
+      "id": 8,
+      "type": "ACEStep15XLTextEncode",
+      "pos": [
+        -300,
+        -330
+      ],
+      "size": [
+        570,
+        700
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 2
+        },
+        {
+          "name": "tags",
+          "type": "STRING",
+          "link": 3,
+          "widget": {
+            "name": "tags"
+          }
+        },
+        {
+          "name": "lyrics",
+          "type": "STRING",
+          "link": 4,
+          "widget": {
+            "name": "lyrics"
+          }
+        },
+        {
+          "name": "seed",
+          "type": "INT",
+          "link": 5,
+          "widget": {
+            "name": "seed"
+          }
+        },
+        {
+          "name": "bpm",
+          "type": "INT",
+          "link": 6,
+          "widget": {
+            "name": "bpm"
+          }
+        },
+        {
+          "name": "duration",
+          "type": "FLOAT",
+          "link": 7,
+          "widget": {
+            "name": "duration"
+          }
+        },
+        {
+          "name": "timesignature",
+          "type": "COMBO",
+          "link": 21,
+          "widget": {
+            "name": "timesignature"
+          }
+        },
+        {
+          "name": "language",
+          "type": "COMBO",
+          "link": 22,
+          "widget": {
+            "name": "language"
+          }
+        },
+        {
+          "name": "keyscale",
+          "type": "COMBO",
+          "link": 23,
+          "widget": {
+            "name": "keyscale"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "links": [
+            9
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "tags",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 1
+        },
+        {
+          "name": "lyrics",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "cnr_id": "ComfyUI-ACEStep",
+        "Node name for S&R": "ACEStep15XLTextEncode"
+      },
+      "widgets_values": [
+        "Mandarin Chinese solo vocal, voice clone reference, clear lead vocal, intimate close-mic vocal, natural pronunciation, expressive singing, minimal accompaniment, soft piano bed, no instrumental intro, lyrics forward, clean vocal mix, gentle emotional delivery",
+        "[verse]\n月色落在窗前\n我把想念轻轻念给你听\n风穿过安静的长街\n像你的声音靠近我心里\n\n[verse]\n请用温柔的声音唱出这些字\n每一句都清楚\n每一次停顿都像呼吸\n让我听见熟悉的你",
+        0,
+        "fixed",
+        80,
+        30.0,
+        "4",
+        "zh",
+        "G minor",
+        false,
+        2,
+        0.85,
+        0.9,
+        0,
+        0
+      ],
+      "color": "#2B6E7F",
+      "bgcolor": "#18323D"
+    },
+    {
+      "id": 9,
+      "type": "ACEStep15XLEmptyLatentAudio",
+      "pos": [
+        -300,
+        500
+      ],
+      "size": [
+        330,
+        140
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "seconds",
+          "type": "FLOAT",
+          "link": 8,
+          "widget": {
+            "name": "seconds"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "latent",
+          "type": "LATENT",
+          "links": [
+            16
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "seconds",
+          "type": "FLOAT",
+          "links": [],
+          "slot_index": 1
+        },
+        {
+          "name": "latent_frames",
+          "type": "INT",
+          "links": [],
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "cnr_id": "ComfyUI-ACEStep",
+        "Node name for S&R": "ACEStep15XLEmptyLatentAudio"
+      },
+      "widgets_values": [
+        30.0,
+        1
+      ],
+      "color": "#2B6E7F",
+      "bgcolor": "#18323D"
+    },
+    {
+      "id": 10,
+      "type": "LoadAudio",
+      "pos": [
+        -1180,
+        180
+      ],
+      "size": [
+        320,
+        110
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            10
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.11.1",
+        "Node name for S&R": "LoadAudio"
+      },
+      "widgets_values": [
+        "reference.wav"
+      ]
+    },
+    {
+      "id": 11,
+      "type": "ACEStep15XLReferenceAudio",
+      "pos": [
+        320,
+        -330
+      ],
+      "size": [
+        330,
+        220
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 9
+        },
+        {
+          "name": "reference_audio",
+          "type": "AUDIO",
+          "link": 10
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 11
+        }
+      ],
+      "outputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "links": [
+            13
+          ]
+        },
+        {
+          "name": "reference_latent",
+          "type": "LATENT",
+          "links": []
+        },
+        {
+          "name": "negative_conditioning",
+          "type": "CONDITIONING",
+          "links": [
+            15
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "ComfyUI-ACEStep",
+        "Node name for S&R": "ACEStep15XLReferenceAudio"
+      },
+      "widgets_values": [
+        1.0,
+        0.0,
+        30.0
+      ],
+      "color": "#2B6E7F",
+      "bgcolor": "#18323D"
+    },
+    {
+      "id": 14,
+      "type": "KSampler",
+      "pos": [
+        620,
+        -520
+      ],
+      "size": [
+        330,
+        350
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 12
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 13
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 15
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 16
+        },
+        {
+          "name": "seed",
+          "type": "INT",
+          "link": 17,
+          "widget": {
+            "name": "seed"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            18
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.11.1",
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        0,
+        "fixed",
+        8,
+        1,
+        "euler",
+        "simple",
+        1
+      ]
+    },
+    {
+      "id": 15,
+      "type": "VAEDecodeAudio",
+      "pos": [
+        990,
+        -560
+      ],
+      "size": [
+        230,
+        100
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 18
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 19
+        }
+      ],
+      "outputs": [
+        {
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            20
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.11.1",
+        "Node name for S&R": "VAEDecodeAudio"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 16,
+      "type": "PreviewAudio",
+      "pos": [
+        1270,
+        -560
+      ],
+      "size": [
+        280,
+        90
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 20
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.11.1",
+        "Node name for S&R": "PreviewAudio"
+      },
+      "widgets_values": []
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      0,
+      2,
+      0,
+      "MODEL"
+    ],
+    [
+      2,
+      3,
+      0,
+      8,
+      0,
+      "CLIP"
+    ],
+    [
+      3,
+      6,
+      0,
+      8,
+      1,
+      "STRING"
+    ],
+    [
+      4,
+      6,
+      1,
+      8,
+      2,
+      "STRING"
+    ],
+    [
+      5,
+      5,
+      0,
+      8,
+      3,
+      "INT"
+    ],
+    [
+      6,
+      6,
+      2,
+      8,
+      4,
+      "INT"
+    ],
+    [
+      7,
+      6,
+      3,
+      8,
+      5,
+      "FLOAT"
+    ],
+    [
+      8,
+      6,
+      3,
+      9,
+      0,
+      "FLOAT"
+    ],
+    [
+      9,
+      8,
+      0,
+      11,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      10,
+      10,
+      0,
+      11,
+      1,
+      "AUDIO"
+    ],
+    [
+      11,
+      4,
+      0,
+      11,
+      2,
+      "VAE"
+    ],
+    [
+      12,
+      2,
+      0,
+      14,
+      0,
+      "MODEL"
+    ],
+    [
+      13,
+      11,
+      0,
+      14,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      15,
+      11,
+      2,
+      14,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      16,
+      9,
+      0,
+      14,
+      3,
+      "LATENT"
+    ],
+    [
+      17,
+      5,
+      0,
+      14,
+      4,
+      "INT"
+    ],
+    [
+      18,
+      14,
+      0,
+      15,
+      0,
+      "LATENT"
+    ],
+    [
+      19,
+      4,
+      0,
+      15,
+      1,
+      "VAE"
+    ],
+    [
+      20,
+      15,
+      0,
+      16,
+      0,
+      "AUDIO"
+    ],
+    [
+      21,
+      6,
+      4,
+      8,
+      6,
+      "COMBO"
+    ],
+    [
+      22,
+      6,
+      5,
+      8,
+      7,
+      "COMBO"
+    ],
+    [
+      23,
+      6,
+      6,
+      8,
+      8,
+      "COMBO"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.75,
+      "offset": [
+        280,
+        420
+      ]
+    },
+    "source": "ComfyUI-ACEStep example workflow",
+    "note": "Reference audio supplies vocal timbre; ACEStep15XLTTSLikePrompt formats script and musical parameters for TextEncode."
+  },
+  "version": 0.4
+}

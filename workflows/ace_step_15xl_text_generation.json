@@ -1,0 +1,803 @@
+{
+  "id": "comfyui-acestep-text-generation",
+  "revision": 0,
+  "last_node_id": 14,
+  "last_link_id": 17,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "UNETLoader",
+      "pos": [
+        -780,
+        -640
+      ],
+      "size": [
+        380,
+        110
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            1
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.11.1",
+        "Node name for S&R": "UNETLoader",
+        "models": [
+          {
+            "name": "acestep_v1.5_xl_turbo_bf16.safetensors",
+            "directory": "diffusion_models"
+          }
+        ]
+      },
+      "widgets_values": [
+        "acestep_v1.5_xl_turbo_bf16.safetensors",
+        "default"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "ModelSamplingAuraFlow",
+      "pos": [
+        -360,
+        -640
+      ],
+      "size": [
+        330,
+        110
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            9
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.11.1",
+        "Node name for S&R": "ModelSamplingAuraFlow"
+      },
+      "widgets_values": [
+        3
+      ]
+    },
+    {
+      "id": 3,
+      "type": "DualCLIPLoader",
+      "pos": [
+        -780,
+        -470
+      ],
+      "size": [
+        380,
+        180
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            2
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.11.1",
+        "Node name for S&R": "DualCLIPLoader"
+      },
+      "widgets_values": [
+        "qwen_0.6b_ace15.safetensors",
+        "qwen_4b_ace15.safetensors",
+        "ace",
+        "default"
+      ]
+    },
+    {
+      "id": 4,
+      "type": "VAELoader",
+      "pos": [
+        -780,
+        -230
+      ],
+      "size": [
+        380,
+        110
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            16
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.11.1",
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "ace_1.5_vae.safetensors"
+      ]
+    },
+    {
+      "id": 5,
+      "type": "Seed (rgthree)",
+      "pos": [
+        -780,
+        -40
+      ],
+      "size": [
+        315,
+        130
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "seed",
+          "type": "INT",
+          "links": [
+            5,
+            14
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "cnr_id": "rgthree-comfy",
+        "Node name for S&R": "Seed (rgthree)"
+      },
+      "widgets_values": [
+        -1,
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "id": 6,
+      "type": "ACEStep15XLPromptLyrics",
+      "pos": [
+        -1180,
+        -230
+      ],
+      "size": [
+        420,
+        300
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "tags",
+          "type": "STRING",
+          "links": [
+            3
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "lyrics",
+          "type": "STRING",
+          "links": [
+            4
+          ],
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "cnr_id": "ComfyUI-ACEStep",
+        "Node name for S&R": "ACEStep15XLPromptLyrics"
+      },
+      "widgets_values": [
+        "gentle female vocal, moonlit romance, soft love ballad, dreamy atmosphere, tender emotional pop, slow dance, intimate night scene, warm piano, airy strings, soft reverb, romantic lyrics, soothing melody",
+        "[verse]  \nMoonlight falls on your silver skin  \nSoft as a secret drifting in  \nNight wind carries your name to me  \nLike a wave on a quiet sea  \n\n[verse]  \nYour eyes shine where the shadows fade  \nTwo little stars that heaven made  \nI move closer, slow and light  \nWrapped in the hush of the blue midnight  \n\n[pre-chorus]  \nNo need for words, no need to run  \nOur hearts are speaking one by one  \nEvery breath becomes a vow  \nOnly love can find us now  \n\n[chorus]  \nHold me under the moonlight glow  \nLet the tender feelings flow  \nIn your arms I lose my way  \nBut I want to stay, I want to stay  \n\nKiss me where the night is warm  \nKeep me safe inside your storm  \nIf the world should fade from view  \nI’ll still be here loving you  \n\n[verse]  \nWhite roses bloom beside the lane  \nDancing softly after rain  \nYour hand in mine, so calm, so true  \nEvery dream leads back to you  \n\n[verse]  \nThe river mirrors the moon above  \nLike a song made out of love  \nFootsteps vanish in the sand  \nBut I still feel your gentle hand  \n\n[pre-chorus]  \nNo need for gold, no need for time  \nYour heartbeat softly answers mine  \nEvery star begins to sway  \nWhen you whisper, “please don’t fade”  \n\n[chorus]  \nHold me under the moonlight glow  \nLet the tender feelings flow  \nIn your arms I lose my way  \nBut I want to stay, I want to stay  \n\nKiss me where the night is warm  \nKeep me safe inside your storm  \nIf the world should fade from view  \nI’ll still be here loving you  \n\n[bridge]  \nAnd if dawn comes stealing the sky  \nI won’t say goodbye  \nI’ll keep your warmth inside my chest  \nWhere lonely dreams can rest  \n\nYour voice is silk, your touch is fire  \nSoftly lifting my desire  \nIn this silence, pure and bright  \nWe become the song of night  \n\n[final chorus]  \nHold me under the moonlight glow  \nLet the tender feelings flow  \nIn your arms I lose my way  \nBut I want to stay, I want to stay  \n\nLove me till the morning dew  \nPaints the fields in pale blue  \nIf the stars all disappear  \nI’ll still feel you near, still feel you near  \n\n[outro]  \nMoonlight fades, but love remains  \nSweet as roses after rain  \nClose your eyes and stay with me  \nForever in this silver dream"
+      ],
+      "color": "#2B6E7F",
+      "bgcolor": "#18323D"
+    },
+    {
+      "id": 7,
+      "type": "Float",
+      "pos": [
+        -1180,
+        120
+      ],
+      "size": [
+        210,
+        70
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": [
+            7,
+            8
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Float"
+      },
+      "widgets_values": [
+        "120.0"
+      ]
+    },
+    {
+      "id": 8,
+      "type": "ACEStep15XLTextEncode",
+      "pos": [
+        -300,
+        -330
+      ],
+      "size": [
+        570,
+        700
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 2
+        },
+        {
+          "name": "tags",
+          "type": "STRING",
+          "link": 3,
+          "widget": {
+            "name": "tags"
+          }
+        },
+        {
+          "name": "lyrics",
+          "type": "STRING",
+          "link": 4,
+          "widget": {
+            "name": "lyrics"
+          }
+        },
+        {
+          "name": "seed",
+          "type": "INT",
+          "link": 5,
+          "widget": {
+            "name": "seed"
+          }
+        },
+        {
+          "name": "bpm",
+          "type": "INT",
+          "link": 6,
+          "widget": {
+            "name": "bpm"
+          }
+        },
+        {
+          "name": "duration",
+          "type": "FLOAT",
+          "link": 7,
+          "widget": {
+            "name": "duration"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "links": [
+            10,
+            11
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "tags",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 1
+        },
+        {
+          "name": "lyrics",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "cnr_id": "ComfyUI-ACEStep",
+        "Node name for S&R": "ACEStep15XLTextEncode"
+      },
+      "widgets_values": [
+        "gentle female vocal, moonlit romance, soft love ballad, dreamy atmosphere, tender emotional pop, slow dance, intimate night scene, warm piano, airy strings, soft reverb, romantic lyrics, soothing melody",
+        "[verse]  \nMoonlight falls on your silver skin  \nSoft as a secret drifting in  \nNight wind carries your name to me  \nLike a wave on a quiet sea  \n\n[verse]  \nYour eyes shine where the shadows fade  \nTwo little stars that heaven made  \nI move closer, slow and light  \nWrapped in the hush of the blue midnight  \n\n[pre-chorus]  \nNo need for words, no need to run  \nOur hearts are speaking one by one  \nEvery breath becomes a vow  \nOnly love can find us now  \n\n[chorus]  \nHold me under the moonlight glow  \nLet the tender feelings flow  \nIn your arms I lose my way  \nBut I want to stay, I want to stay  \n\nKiss me where the night is warm  \nKeep me safe inside your storm  \nIf the world should fade from view  \nI’ll still be here loving you  \n\n[verse]  \nWhite roses bloom beside the lane  \nDancing softly after rain  \nYour hand in mine, so calm, so true  \nEvery dream leads back to you  \n\n[verse]  \nThe river mirrors the moon above  \nLike a song made out of love  \nFootsteps vanish in the sand  \nBut I still feel your gentle hand  \n\n[pre-chorus]  \nNo need for gold, no need for time  \nYour heartbeat softly answers mine  \nEvery star begins to sway  \nWhen you whisper, “please don’t fade”  \n\n[chorus]  \nHold me under the moonlight glow  \nLet the tender feelings flow  \nIn your arms I lose my way  \nBut I want to stay, I want to stay  \n\nKiss me where the night is warm  \nKeep me safe inside your storm  \nIf the world should fade from view  \nI’ll still be here loving you  \n\n[bridge]  \nAnd if dawn comes stealing the sky  \nI won’t say goodbye  \nI’ll keep your warmth inside my chest  \nWhere lonely dreams can rest  \n\nYour voice is silk, your touch is fire  \nSoftly lifting my desire  \nIn this silence, pure and bright  \nWe become the song of night  \n\n[final chorus]  \nHold me under the moonlight glow  \nLet the tender feelings flow  \nIn your arms I lose my way  \nBut I want to stay, I want to stay  \n\nLove me till the morning dew  \nPaints the fields in pale blue  \nIf the stars all disappear  \nI’ll still feel you near, still feel you near  \n\n[outro]  \nMoonlight fades, but love remains  \nSweet as roses after rain  \nClose your eyes and stay with me  \nForever in this silver dream",
+        0,
+        "fixed",
+        72,
+        120.0,
+        "4",
+        "en",
+        "E minor",
+        true,
+        2,
+        0.85,
+        0.9,
+        0,
+        0
+      ],
+      "color": "#2B6E7F",
+      "bgcolor": "#18323D"
+    },
+    {
+      "id": 9,
+      "type": "ACEStep15XLEmptyLatentAudio",
+      "pos": [
+        -300,
+        470
+      ],
+      "size": [
+        330,
+        140
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "seconds",
+          "type": "FLOAT",
+          "link": 8,
+          "widget": {
+            "name": "seconds"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "latent",
+          "type": "LATENT",
+          "links": [
+            13
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "seconds",
+          "type": "FLOAT",
+          "links": [],
+          "slot_index": 1
+        },
+        {
+          "name": "latent_frames",
+          "type": "INT",
+          "links": [],
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "cnr_id": "ComfyUI-ACEStep",
+        "Node name for S&R": "ACEStep15XLEmptyLatentAudio"
+      },
+      "widgets_values": [
+        120.0,
+        1
+      ],
+      "color": "#2B6E7F",
+      "bgcolor": "#18323D"
+    },
+    {
+      "id": 10,
+      "type": "PrimitiveNode",
+      "pos": [
+        -620,
+        250
+      ],
+      "size": [
+        210,
+        70
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            6
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PrimitiveNode"
+      },
+      "widgets_values": [
+        72,
+        "fixed"
+      ]
+    },
+    {
+      "id": 11,
+      "type": "ConditioningZeroOut",
+      "pos": [
+        320,
+        170
+      ],
+      "size": [
+        230,
+        80
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 11
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            12
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.11.1",
+        "Node name for S&R": "ConditioningZeroOut"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 12,
+      "type": "KSampler",
+      "pos": [
+        620,
+        -520
+      ],
+      "size": [
+        330,
+        350
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 9
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 10
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 12
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 13
+        },
+        {
+          "name": "seed",
+          "type": "INT",
+          "link": 14,
+          "widget": {
+            "name": "seed"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            15
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.11.1",
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        0,
+        "fixed",
+        8,
+        1,
+        "euler",
+        "simple",
+        1
+      ]
+    },
+    {
+      "id": 13,
+      "type": "VAEDecodeAudio",
+      "pos": [
+        990,
+        -560
+      ],
+      "size": [
+        230,
+        100
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 15
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 16
+        }
+      ],
+      "outputs": [
+        {
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            17
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.11.1",
+        "Node name for S&R": "VAEDecodeAudio"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 14,
+      "type": "PreviewAudio",
+      "pos": [
+        1270,
+        -560
+      ],
+      "size": [
+        280,
+        90
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 17
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.11.1",
+        "Node name for S&R": "PreviewAudio"
+      },
+      "widgets_values": []
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      0,
+      2,
+      0,
+      "MODEL"
+    ],
+    [
+      2,
+      3,
+      0,
+      8,
+      0,
+      "CLIP"
+    ],
+    [
+      3,
+      6,
+      0,
+      8,
+      1,
+      "STRING"
+    ],
+    [
+      4,
+      6,
+      1,
+      8,
+      2,
+      "STRING"
+    ],
+    [
+      5,
+      5,
+      0,
+      8,
+      3,
+      "INT"
+    ],
+    [
+      6,
+      10,
+      0,
+      8,
+      4,
+      "INT"
+    ],
+    [
+      7,
+      7,
+      0,
+      8,
+      5,
+      "FLOAT"
+    ],
+    [
+      8,
+      7,
+      0,
+      9,
+      0,
+      "FLOAT"
+    ],
+    [
+      9,
+      2,
+      0,
+      12,
+      0,
+      "MODEL"
+    ],
+    [
+      10,
+      8,
+      0,
+      12,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      11,
+      8,
+      0,
+      11,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      12,
+      11,
+      0,
+      12,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      13,
+      9,
+      0,
+      12,
+      3,
+      "LATENT"
+    ],
+    [
+      14,
+      5,
+      0,
+      12,
+      4,
+      "INT"
+    ],
+    [
+      15,
+      12,
+      0,
+      13,
+      0,
+      "LATENT"
+    ],
+    [
+      16,
+      4,
+      0,
+      13,
+      1,
+      "VAE"
+    ],
+    [
+      17,
+      13,
+      0,
+      14,
+      0,
+      "AUDIO"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.75,
+      "offset": [
+        280,
+        420
+      ]
+    },
+    "source": "ComfyUI-ACEStep example workflow",
+    "note": "Example workflow for ACE-Step 1.5XL text-to-audio generation."
+  },
+  "version": 0.4
+}
