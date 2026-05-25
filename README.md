@@ -10,7 +10,7 @@ Clone this repository into your ComfyUI `custom_nodes` directory, then restart C
 
 ```bash
 cd ComfyUI/custom_nodes
-git clone [ComfyUI-ACEStep](https://github.com/starsFriday/ComfyUI-ACEStep.git)
+git clone https://github.com/starsFriday/ComfyUI-ACEStep.git
 ```
 
 ## Model Files
